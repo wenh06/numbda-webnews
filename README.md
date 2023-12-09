@@ -36,6 +36,25 @@ The dataset contains the following 14 categories:
 <!-- Provide the basic links for the model. -->
 
 - **Repository:** <https://github.com/wenh06/numbda-webnews>
+- **Huggingface Hub:** <https://huggingface.co/wenh06/numbda-webnews>
+
+## Uses
+
+<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
+
+### Direct Use
+
+<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+
+```python
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+
+# "wenh06/numbda-webnews" can be replaced with local path to the model directory
+tokenizer = AutoTokenizer.from_pretrained("wenh06/numbda-webnews")
+model = AutoModelForSequenceClassification.from_pretrained("wenh06/numbda-webnews")
+
+pipeline = pipeline("text-classification", model=model, tokenizer=tokenizer)
+```
 
 ### Recommendations
 
@@ -50,3 +69,9 @@ Users (both direct and downstream) should be made aware of the risks, biases and
 <!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
 
 This model was fine-tuned using a new dataset of approximately 40k news articles crawled from news websites in China, which would be released latter some time.
+
+## Evaluation
+
+<!-- This section describes the evaluation protocols and provides the results. -->
+
+Evaluation results and software/hardware information can be found in [Weights & Biases](https://wandb.ai/wenh06/huggingface/runs/mg4uedxe/workspace?workspace=user-wenh06).
