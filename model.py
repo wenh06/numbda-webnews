@@ -381,7 +381,7 @@ def getModel(path=None):
     path: directory or compressed file
     """
     print(f"Loading model from {path}...")
-    if path is not None:
+    if path is not None and Path(path).exists():
         path = Path(path).expanduser().resolve()
         if path.is_file():
             # assert is compressed file
