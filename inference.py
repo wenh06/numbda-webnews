@@ -9,18 +9,18 @@ from tqdm.auto import tqdm
 dataset = os.getenv("ENV_DATASET")  # 基础数据集路径
 c_dataset = os.getenv("ENV_CHILDDATASET")  # 子数据集名称
 save_path = os.getenv("ENV_RESULT")  # 中间结果存储路径
-no = os.getenv("ENV_NO")  # 结果文件的no
+no = os.getenv("ENV_NO")  # 结果文件的No.
 assert "default" not in [dataset, c_dataset, save_path, no]
 
 num_examples = int(os.getenv("ENV_NUM_EXAMPLES", 200))  # 评测样本数
 model_batch_size = int(os.getenv("ENV_MODEL_BATCH_SIZE", 32))  # 模型评测时的batch_size
 
-print(f"基础数据集: {dataset}")
-print(f"子数据集: {c_dataset}")
-print(f"结果文件路径: {save_path}")
-print(f"结果编号: {no}")
-print(f"评测样本数: {num_examples}")
-print(f"模型评测时的batch_size: {model_batch_size}")
+print(f"dataset: {dataset}")
+print(f"sub-dataset: {c_dataset}")
+print(f"result file path: {save_path}")
+print(f"result No.: {no}")
+print(f"eval sample number: {num_examples}")
+print(f"eval batch_size: {model_batch_size}")
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -163,7 +163,7 @@ def get_inference(model):
         axis=1,
     )
 
-    # 保存预测结果
+    # save results
     df_results.to_csv(
         os.path.join(save_path, no + "-text.csv"),
         quoting=csv.QUOTE_NONNUMERIC,

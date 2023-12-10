@@ -401,7 +401,7 @@ def getModel(path=None):
             return HuggingFaceNLPVictimModel(model, tokenizer)
         else:
             tmpdir = None
-            assert path.is_dir(), f"Path {path} is not a file or directory"
+            # assert path.is_dir(), f"Path {path} is not a file or directory"
 
     model = transformers.AutoModelForSequenceClassification.from_pretrained(path or DEFAULT_MODEL)
     tokenizer = transformers.AutoTokenizer.from_pretrained(path or DEFAULT_MODEL)
