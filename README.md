@@ -77,3 +77,9 @@ This model was fine-tuned using a new dataset of approximately 40k news articles
 <!-- This section describes the evaluation protocols and provides the results. -->
 
 Evaluation results and software/hardware information can be found in [Weights & Biases](https://wandb.ai/wenh06/huggingface/runs/mg4uedxe/workspace?workspace=user-wenh06).
+
+| Metric        | Score |
+|---------------|-------|
+| top1-accuracy | 0.768 |
+| top3-accuracy | 0.944 |
+| top5-accuracy | 0.981 |
