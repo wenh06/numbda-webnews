@@ -1,0 +1,49 @@
+name: Docker CI Test
+
+on:
+  push:
+    branches: [ 'main' ]
+
+env:
+  ENV_NO: 10000
+  RESPath: ${{ github.workspace }}/result
+
+jobs:
+  build:
+    if: github.repository_owner == 'wenh06'
+
+    runs-on: ubuntu-20.04
+    steps:
+    -
+      name: Checkout
+      uses: actions/checkout@v3
+    -
+      name: Download dataset
+      run: |
+        mkdir -p ${{ github.workspace }}/dataset
+        wget -O ${{ github.workspace }}/dataset/adv.csv https://openi.pcl.ac.cn/Numbda/TextAdvGen/raw/branch/master/adv.csv
+    -
+      name: Build the Docker image
+      uses: docker/build-push-action@v4
+      with:
+        tags: numbda-webnews:latest
+        file: Dockerfile
+        push: false
+    -
+      name: Run the Docker image
+      run: |
+        docker run \
+        -v ${{ env.RESPath }}:/result \
+        -v ${{ github.workspace }}/dataset:/dataset \
+        -e ENV_DATASET=/dataset/adv.csv \
+        -e ENV_CHILDDATASET=chinanews \
+        -e ENV_RESULT=/result \
+        -e ENV_NO=${{ env.ENV_NO }} \
+        -e ENV_NUM_EXAMPLES=40 \
+        -e ENV_MODEL_BATCH_SIZE=4 \
+        numbda-webnews:latest
+    -
+      name: Assert result file exists and not empty
+      run: |
+        ls -l ${{ env.RESPath }}
+        test -s ${{ env.RESPath }}/${{ env.ENV_NO }}-text.csv

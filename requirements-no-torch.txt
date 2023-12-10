@@ -1,0 +1,7 @@
+numpy
+pandas
+transformers
+datasets
+einops
+torch_ecg
+tqdm
