@@ -174,7 +174,7 @@ class HuggingFaceNLPVictimModel(PyTorchNLPVictimModel):
         """ """
         self.model = model
         self.tokenizer = tokenizer
-        self._pipeline = None
+        self._pipeline = transformers.pipeline("sentiment-analysis", model=self.model, tokenizer=self.tokenizer)
 
     def __call__(self, text_input_list: Sequence[str]) -> Union[List[str], torch.Tensor]:
         """Passes inputs to HuggingFace models as keyword arguments.
@@ -273,14 +273,83 @@ class HuggingFaceNLPVictimModel(PyTorchNLPVictimModel):
 
     @property
     def id2label(self) -> dict:
-        """ """
         return self.model.config.id2label
 
     @property
     def max_length(self) -> int:
-        """ """
         # Default max length is set to be int(1e30), so we force 512 to enable batching.
         return 512 if self.tokenizer.model_max_length == int(1e30) else self.tokenizer.model_max_length
+
+    def pipeline(self, *args, **kwargs) -> Any:
+        """Sentiment analysis pipeline from HuggingFace Transformers.
+
+        Example
+        -------
+        >>> model = HuggingFaceNLPVictimModel(model, tokenizer)
+        >>> model.pipeline("阿根廷勇夺世界杯冠军")
+        [
+            [
+                {
+                "label": "体育",
+                "score": 0.9927777647972107
+                },
+                {
+                "label": "资讯",
+                "score": 0.005757214967161417
+                },
+                {
+                "label": "游戏",
+                "score": 0.0004179429088253528
+                },
+                {
+                "label": "国际",
+                "score": 0.00037838597199879587
+                },
+                {
+                "label": "财经",
+                "score": 0.0001906257530208677
+                },
+                {
+                "label": "娱乐",
+                "score": 0.00009585713269189
+                },
+                {
+                "label": "科技",
+                "score": 0.00008614574471721426
+                },
+                {
+                "label": "汽车",
+                "score": 0.00006398104596883059
+                },
+                {
+                "label": "社会",
+                "score": 0.00006373062933562323
+                },
+                {
+                "label": "萌宠",
+                "score": 0.000059644735301844776
+                },
+                {
+                "label": "健康",
+                "score": 0.000042357500205980614
+                },
+                {
+                "label": "时政",
+                "score": 0.000026076593712787144
+                },
+                {
+                "label": "生活",
+                "score": 0.000022929199985810556
+                },
+                {
+                "label": "美食",
+                "score": 0.000017451902749598958
+                }
+            ]
+        ]
+
+        """
+        return self._pipeline(*args, **kwargs)
 
 
 def _unzip_file(path_to_zip_file: str, unzipped_folder_path: str) -> None:
