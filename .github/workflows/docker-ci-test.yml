@@ -33,15 +33,18 @@ jobs:
       name: Run the Docker image
       run: |
         docker run \
-        -v ${{ env.RESPath }}:/result \
-        -v ${{ github.workspace }}/dataset:/dataset \
-        -e ENV_DATASET=/dataset/adv.csv \
-        -e ENV_CHILDDATASET=chinanews \
-        -e ENV_RESULT=/result \
-        -e ENV_NO=${{ env.ENV_NO }} \
-        -e ENV_NUM_EXAMPLES=40 \
-        -e ENV_MODEL_BATCH_SIZE=4 \
-        numbda-webnews:latest
+          -v ${{ env.RESPath }}:/result \
+          -v ${{ github.workspace }}/dataset:/dataset \
+          -e ENV_DATASET=/dataset/adv.csv \
+          -e ENV_CHILDDATASET=chinanews \
+          -e ENV_RESULT=/result \
+          -e ENV_NO=${{ env.ENV_NO }} \
+          -e ENV_NUM_EXAMPLES=40 \
+          -e ENV_MODEL_BATCH_SIZE=4 \
+          numbda-webnews:latest \
+          bash -c "python3 -u main.py wenh06/numbda-webnews"
+        docker ps -a
+        docker stop $(docker ps -a -q)
     -
       name: Assert result file exists and not empty
       run: |

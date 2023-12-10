@@ -37,4 +37,4 @@ COPY ./ /numbda-webnews-test
 
 # RUN python _download.py
 
-CMD ["python", "main.py"]
+# CMD ["python", "main.py"]
