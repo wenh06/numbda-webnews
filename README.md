@@ -12,7 +12,7 @@ pipeline_tag: text-classification
 
 `numbda-webnews` is a news classification model fine-tuned from [roberta-base-finetuned-ifeng-chinese](https://huggingface.co/voidful/roberta-base-finetuned-ifeng-chinese) with a new dataset of approximately 40k news articles crawled from news websites in China.
 
-The dataset contains the following 14 categories:
+The dataset contains (not limited to) the following 14 categories:
 
 - 资讯
 - 财经
@@ -28,6 +28,8 @@ The dataset contains the following 14 categories:
 - 生活
 - 美食
 - 游戏
+
+The above 14 categories have a total of 26k samples.
 
 ## Model Details
 
