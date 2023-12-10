@@ -1,7 +1,7 @@
 numpy
 pandas
+einops
 transformers
 datasets
-einops
-torch_ecg
+torch_ecg==0.0.26
 tqdm
