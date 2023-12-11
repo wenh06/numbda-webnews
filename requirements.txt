@@ -4,5 +4,5 @@ torch
 einops
 transformers
 datasets
-torch_ecg==0.0.26
+torch_ecg
 tqdm
