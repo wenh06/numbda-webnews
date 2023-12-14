@@ -33,7 +33,7 @@ The above 14 categories have a total of 26k samples.
 
 ## Model Details
 
-### Model Sources [optional]
+### Model Sources
 
 <!-- Provide the basic links for the model. -->
 
@@ -83,3 +83,9 @@ Evaluation results and software/hardware information can be found in [Weights & 
 | top1-accuracy | 0.768 |
 | top3-accuracy | 0.944 |
 | top5-accuracy | 0.981 |
+
+### Curves of Top n Accuracy
+
+| Top1 Accuracy | Top3 Accuracy | Top5 Accuracy |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+| <img width="600" alt="eval-top1-acc.svg" src="images/eval-top1-acc.svg"> |  <img width="600" alt="eval-top3-acc.svg" src="images/eval-top3-acc.svg"> |  <img width="600" alt="eval-top5-acc.svg" src="images/eval-top5-acc.svg"> |
