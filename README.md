@@ -10,7 +10,7 @@ pipeline_tag: text-classification
 
 <!-- Provide a quick summary of what the model is/does. -->
 
-`numbda-webnews` is a news classification model fine-tuned from [roberta-base-finetuned-ifeng-chinese](https://huggingface.co/voidful/roberta-base-finetuned-ifeng-chinese) with a new dataset of approximately 40k news articles crawled from news websites in China.
+`numbda-webnews` is a news classification model fine-tuned from [roberta-base-finetuned-ifeng-chinese](https://huggingface.co/voidful/roberta-base-finetuned-ifeng-chinese) with a new dataset of approximately 40k news articles crawled from news websites in China, which is a sub-project of the [AI-Testing project](https://numbda.cs.tsinghua.edu.cn/AI-Testing/).
 
 The dataset contains (not limited to) the following 14 categories:
 

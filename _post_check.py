@@ -4,9 +4,9 @@ import pandas as pd
 
 
 def check_result():
-    save_path = os.getenv("ENV_RESULT")  # 中间结果存储路径
-    no = os.getenv("ENV_NO")  # 结果文件的no
-    num_examples = int(os.getenv("ENV_NUM_EXAMPLES", 200))  # 评测样本数
+    save_path = os.getenv("ENV_RESULT")
+    no = os.getenv("ENV_NO")
+    num_examples = int(os.getenv("ENV_NUM_EXAMPLES", 200))
 
     result_path = os.path.join(save_path, no + "-text.csv")
     assert os.path.exists(result_path)
