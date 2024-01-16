@@ -8,13 +8,11 @@ pipeline_tag: text-classification
 ---
 # Model Card for `numbda-webnews`
 
-[中文版](README-zh.md)
-
 <!-- Provide a quick summary of what the model is/does. -->
 
-`numbda-webnews` is a news classification model fine-tuned from [roberta-base-finetuned-ifeng-chinese](https://huggingface.co/voidful/roberta-base-finetuned-ifeng-chinese) with a new dataset of approximately 40k news articles crawled from news websites in China, which is a sub-project of the [AI-Testing project](https://numbda.cs.tsinghua.edu.cn/AI-Testing/).
+`numbda-webnews` 是一个从 [roberta-base-finetuned-ifeng-chinese](https://huggingface.co/voidful/roberta-base-finetuned-ifeng-chinese) 微调得到的新闻分类模型。模型训练使用了一个新的数据集，该数据集包含了大约 4 万条从中国新闻网站爬取的新闻文章。这个数据集的构建是 [AI-Testing 项目](https://numbda.cs.tsinghua.edu.cn/AI-Testing/) 的一个子项目。
 
-The dataset contains (not limited to) the following 14 categories:
+数据集包含（不限于）以下 14 个类别：
 
 - 资讯
 - 财经
@@ -31,22 +29,20 @@ The dataset contains (not limited to) the following 14 categories:
 - 美食
 - 游戏
 
-The above 14 categories have a total of 26k samples.
+以上 14 个类别共有 2.6 万条样本。
 
-## Model Details
+## 模型介绍
 
-### Model Sources
+### 模型仓库
 
 <!-- Provide the basic links for the model. -->
 
 - **Repository:** <https://github.com/wenh06/numbda-webnews>
 - **Huggingface Hub:** <https://huggingface.co/wenh06/numbda-webnews>
 
-## Uses
+## 模型使用方法
 
 <!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
-### Direct Use
 
 <!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
 
@@ -60,33 +56,27 @@ model = AutoModelForSequenceClassification.from_pretrained("wenh06/numbda-webnew
 pipeline = pipeline("text-classification", model=model, tokenizer=tokenizer)
 ```
 
-### Recommendations
+## 模型训练
 
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
-
-## Training Details
-
-### Training Data
+### 训练数据
 
 <!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
 
-This model was fine-tuned using a new dataset of approximately 40k news articles crawled from news websites in China, which would be released latter some time.
+本模型使用了一个新闻分类数据集，该数据集包含了大约 4 万条从中国新闻网站爬取的新闻文章。这个数据集的构建是 [AI-Testing 项目](https://numbda.cs.tsinghua.edu.cn/AI-Testing/) 的一个子项目，将在后续开源发布。
 
-## Evaluation
+## 模型评测
 
 <!-- This section describes the evaluation protocols and provides the results. -->
 
-Evaluation results and software/hardware information can be found in [Weights & Biases](https://wandb.ai/wenh06/huggingface/runs/mg4uedxe/workspace?workspace=user-wenh06).
+模型评测结果和软硬件信息可以在 [Weights & Biases](https://wandb.ai/wenh06/huggingface/runs/mg4uedxe/workspace?workspace=user-wenh06) 中找到。
 
-| Metric        | Score |
+| 评测指标       | 结果  |
 |---------------|-------|
 | top1-accuracy | 0.768 |
 | top3-accuracy | 0.944 |
 | top5-accuracy | 0.981 |
 
-### Curves of Top n Accuracy
+### Top n 准确率曲线
 
 | Top1 Accuracy | Top3 Accuracy | Top5 Accuracy |
 |:-------------------------:|:-------------------------:|:-------------------------:|
