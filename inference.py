@@ -155,11 +155,11 @@ def get_inference(model):
         }
     )
     df_results["result_type"] = df_results.apply(
-        lambda row: "Skipped"
-        if row["ground_truth_output"] != row["original_output"]
-        else "Failed"
-        if row["perturbed_output"] == row["original_output"]
-        else "Successful",
+        lambda row: (
+            "Skipped"
+            if row["ground_truth_output"] != row["original_output"]
+            else "Failed" if row["perturbed_output"] == row["original_output"] else "Successful"
+        ),
         axis=1,
     )
 
