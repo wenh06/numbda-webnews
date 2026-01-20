@@ -49,7 +49,22 @@ def freeze_backbone(model):
 
 
 def main():
-    refined_classes = ["资讯", "财经", "体育", "时政", "娱乐", "社会", "科技", "汽车", "健康", "萌宠", "国际", "生活", "美食", "游戏"]
+    refined_classes = [
+        "资讯",
+        "财经",
+        "体育",
+        "时政",
+        "娱乐",
+        "社会",
+        "科技",
+        "汽车",
+        "健康",
+        "萌宠",
+        "国际",
+        "生活",
+        "美食",
+        "游戏",
+    ]
 
     path = "/home/wenhao/Jupyter/wenhao/workspace/AI-Testing/text/data/roberta-base-finetuned-ifeng-chinese"
     model = transformers.AutoModelForSequenceClassification.from_pretrained(path)
